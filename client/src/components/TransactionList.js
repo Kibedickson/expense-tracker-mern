@@ -1,15 +1,19 @@
 import {GlobalContext} from "../context/GlobalState";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {Transaction} from "./Transaction";
 
 export const TransactionList = () => {
-    const {transactions} = useContext(GlobalContext)
+    const {transactions, getTransactions} = useContext(GlobalContext)
+
+    useEffect(() => {
+        getTransactions()
+    }, [])
     return (
         <>
             <h3>History</h3>
             <ul id="list" className="list">
                 {transactions.map(transaction => (
-                    <Transaction key={transaction.id} transaction={transaction}/>
+                    <Transaction key={transaction._id} transaction={transaction}/>
                 ))}
             </ul>
         </>

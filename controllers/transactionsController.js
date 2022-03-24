@@ -5,7 +5,6 @@ exports.getTransactions = async (req, res, next) => {
         const transactions = await Transaction.find()
         return res.status(201).json({
             success: true,
-            count: transactions.count(),
             data: transactions
         })
     } catch (e) {
@@ -45,7 +44,7 @@ exports.addTransaction = async (req, res, next) => {
 
 exports.deleteTransaction = async (req, res, next) => {
     try {
-        await Transaction.findOneAndDelete({_id: req.body.id})
+        await Transaction.findOneAndDelete({_id: req.body._id})
         return res.status(200).json({
             success: true,
             data: {}
