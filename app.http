@@ -1,0 +1,13 @@
+POST http://localhost:5000/api/v1/transactions
+Content-Type: application/json
+
+{
+  "text": "Food",
+  "amount": 1000
+}
+
+###
+GET http://localhost:5000/api/v1/transactions
+Accept: application/json
+
+###
